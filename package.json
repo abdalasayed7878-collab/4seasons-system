@@ -1,0 +1,19 @@
+{
+  "name": "4seasons-system",
+  "version": "1.0.0",
+  "description": "نظام مغسلة 4Seasons: الموقع العام + نظام الكاشير + قاعدة البيانات",
+  "private": true,
+  "type": "commonjs",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server/index.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/api.test.js test/returning.test.js",
+    "cli": "node --disable-warning=ExperimentalWarning server/cli.js",
+    "seed:demo": "node --disable-warning=ExperimentalWarning server/cli.js seed-demo",
+    "backup": "node --disable-warning=ExperimentalWarning server/cli.js backup"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

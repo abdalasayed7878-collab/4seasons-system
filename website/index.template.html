@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>%%title%%</title>
+    <meta name="description" content="%%description%%">
+    <meta name="theme-color" content="#FF6B35">
+    %%canonical%%
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_EG">
+    <meta property="og:title" content="%%title%%">
+    <meta property="og:description" content="%%description%%">
+    %%og_image%%
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/site.css?v=%%assetv%%">
+    <script type="application/ld+json">%%jsonld%%</script>
+</head>
+<body>
+    <a class="skip-link" href="#services">تخطي إلى المحتوى</a>
+    <header>
+        <nav class="navbar" aria-label="القائمة الرئيسية">
+            <div class="logo-container">
+                <img class="brand-logo" src="/assets/4seasons-emblem.png" alt="شعار %%business_name%%" width="64" height="64">
+                <div class="logo-name">%%business_name%%</div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات والأسعار</a></li>
+                <li><a href="#gallery">معرض الأعمال</a></li>
+                <li><a href="#order">طلب خدمة</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button type="button" class="hamburger" id="hamburger" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>%%business_name%% مغسلة متخصصة</h1>
+            <p class="subtitle">للملابس والسجاد والبطاطين والستائر والانتريهات</p>
+            <p class="hero-description">نقدم لكم أفضل خدمات التنظيف والتعقيم بأسعار تنافسية واستلام وتسليم من أمام المنزل</p>
+            <a href="#order" class="cta-button">اطلب خدمة الآن <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">خدماتنا وأسعارنا</h2>
+        <p class="section-subtitle">قائمة شاملة بجميع الخدمات والأسعار – تنظيف وكي ودراي كلين وإزالة البقع</p>
+        <div class="services-container">
+%%services%%
+        </div>
+%%notices%%
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">معرض أعمالنا</h2>
+        <p class="section-subtitle">أعمالنا تتحدث عن جودة خدمتنا</p>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <div class="gallery-image overview" role="img" aria-label="خدمات تنظيف الملابس والسجاد والمفروشات والستائر"></div>
+                <div class="gallery-overlay"><h3>خدمات عناية متكاملة</h3></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image clothes" role="img" aria-label="ملابس نظيفة"></div>
+                <div class="gallery-overlay"><h3>ملابس نظيفة</h3></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image carpets" role="img" aria-label="سجاد نظيف"></div>
+                <div class="gallery-overlay"><h3>سجاد نظيف</h3></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image bedding" role="img" aria-label="بطانية ومفارش نظيفة"></div>
+                <div class="gallery-overlay"><h3>بطانية نظيفة</h3></div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image curtains" role="img" aria-label="ستائر نظيفة"></div>
+                <div class="gallery-overlay"><h3>ستائر نظيفة</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order" id="order">
+        <h2 class="section-title">اطلب خدمة الاستلام</h2>
+        <p class="section-subtitle">اكتب بياناتك وسيتم التواصل معك خلال %%response_hours%% ساعات لتأكيد موعد الاستلام</p>
+        <div class="order-container">
+            <div class="order-info">
+                <h3>مميزات خدمتنا</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> استلام من المنزل وتسليم خلال %%turnaround_days%% أيام من يوم الاستلام</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> تنظيف وتعقيم بأعلى معايير الجودة</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> أسعار تنافسية وخصومات للعملاء الدائمين</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> السجاد يُسلَّم نظيفًا ومعطرًا ومعقمًا ومغلفًا</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> معاملة العناية الخاصة للملابس الحساسة</li>
+                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> ضمان رضا العميل بنسبة 100%</li>
+                </ul>
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    %%contact_lines%%
+                </div>
+            </div>
+            <div class="order-form">
+                <form id="orderForm" data-wa="%%wa_number%%" novalidate>
+                    <p class="form-error" id="formError" role="alert"></p>
+
+                    <fieldset class="customer-toggle">
+                        <legend class="sr-only">نوع العميل</legend>
+                        <label class="seg"><input type="radio" name="customerType" value="new" checked><span><i class="fas fa-user-plus" aria-hidden="true"></i> عميل جديد</span></label>
+                        <label class="seg"><input type="radio" name="customerType" value="returning"><span><i class="fas fa-user-check" aria-hidden="true"></i> عميل سابق</span></label>
+                    </fieldset>
+
+                    <!-- عميل جديد: بياناته بتتكتب مرة واحدة -->
+                    <div id="newFields">
+                        <div class="form-group">
+                            <label for="fullName"><i class="fas fa-user" aria-hidden="true"></i> الاسم بالكامل</label>
+                            <input type="text" id="fullName" name="fullName" required minlength="2" maxlength="100" autocomplete="name" placeholder="أدخل اسمك بالكامل">
+                            <div class="field-error" data-for="fullName"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber"><i class="fas fa-phone" aria-hidden="true"></i> رقم الهاتف</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" placeholder="مثال: 01012345678">
+                            <div class="field-error" data-for="phoneNumber"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressDetails"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> العنوان</label>
+                            <textarea id="addressDetails" name="address" rows="3" required minlength="6" maxlength="300" autocomplete="street-address" placeholder="العنوان بالكامل مع المعالم"></textarea>
+                            <div class="field-error" data-for="addressDetails"></div>
+                        </div>
+                    </div>
+
+                    <!-- عميل سابق: كود أو هاتف ← تحقق ← بياناته (ويقدر يعدلها) -->
+                    <div id="returningPanel" class="returning-panel" hidden>
+
+                        <div id="stepLookup">
+                            <p class="ret-help">اكتب <strong>كود العميل</strong> المطبوع على بطاقتك أو فاتورتك (مثال: <span dir="ltr">4S-C-000124</span>). لو نسيته اكتب <strong>رقم هاتفك</strong> المسجّل لدينا.</p>
+                            <div class="form-group">
+                                <label for="lookupTerm"><i class="fas fa-id-card" aria-hidden="true"></i> كود العميل أو رقم الهاتف</label>
+                                <div class="inline-field">
+                                    <input type="text" id="lookupTerm" dir="ltr" style="text-align:right" autocomplete="off" maxlength="40" placeholder="4S-C-000124 أو 01012345678">
+                                    <button type="button" class="btn-outline" id="lookupBtn">بحث</button>
+                                </div>
+                                <div class="field-error" data-for="lookupTerm"></div>
+                            </div>
+                        </div>
+
+                        <div id="stepVerify" hidden>
+                            <div class="ret-found" id="verifyIntro" aria-live="polite"></div>
+                            <div id="verifyCode" hidden>
+                                <div class="form-group">
+                                    <label for="last4"><i class="fas fa-shield-halved" aria-hidden="true"></i> آخر 4 أرقام من رقم هاتفك المسجّل</label>
+                                    <input type="text" id="last4" inputmode="numeric" maxlength="4" autocomplete="off" dir="ltr" style="text-align:right" placeholder="••••">
+                                    <div class="field-error" data-for="last4"></div>
+                                </div>
+                            </div>
+                            <div id="verifyOtp" hidden>
+                                <button type="button" class="btn-outline" id="otpSendBtn"><i class="fab fa-whatsapp" aria-hidden="true"></i> أرسل لي كود التحقق على واتساب</button>
+                                <div id="otpEntry" hidden>
+                                    <p class="ret-help" id="otpNote" aria-live="polite"></p>
+                                    <div class="form-group">
+                                        <label for="otpCode"><i class="fas fa-key" aria-hidden="true"></i> كود التحقق (6 أرقام)</label>
+                                        <input type="text" id="otpCode" inputmode="numeric" maxlength="6" autocomplete="one-time-code" dir="ltr" style="text-align:right" placeholder="••••••">
+                                        <div class="field-error" data-for="otpCode"></div>
+                                    </div>
+                                    <p class="ret-help">لم يصلك؟ <button type="button" class="link-btn" id="otpResendBtn">أرسل كودًا جديدًا</button><a class="link-btn" id="otpWaLink" href="#" target="_blank" rel="noopener noreferrer" hidden> · كلّمنا على واتساب</a></p>
+                                </div>
+                            </div>
+                            <div class="field-error" data-for="verify"></div>
+                            <div class="ret-actions">
+                                <button type="button" class="btn-solid-sm" id="verifyBtn">تأكيد <i class="fas fa-check" aria-hidden="true"></i></button>
+                                <button type="button" class="link-btn" id="verifyBack">تغيير الكود / الرقم</button>
+                            </div>
+                        </div>
+
+                        <div id="stepProfile" hidden>
+                            <div class="profile-card" id="profileCard">
+                                <div class="profile-head">
+                                    <span class="profile-avatar" id="pAvatar" aria-hidden="true"></span>
+                                    <div><b id="pName"></b><small>كود العميل: <span id="pCode" dir="ltr"></span></small></div>
+                                    <span class="verified-badge"><i class="fas fa-circle-check" aria-hidden="true"></i> تم التحقق</span>
+                                </div>
+                                <dl class="profile-data">
+                                    <dt><i class="fas fa-phone" aria-hidden="true"></i> الهاتف</dt><dd id="pPhone" dir="ltr" style="text-align:right"></dd>
+                                    <dt><i class="fas fa-map-marker-alt" aria-hidden="true"></i> العنوان</dt><dd id="pAddress"></dd>
+                                </dl>
+                                <p class="profile-balance" id="pBalance" hidden></p>
+                                <div id="pOrders" hidden>
+                                    <strong class="ret-sub">آخر طلباتك</strong>
+                                    <ul class="order-mini" id="pOrdersList"></ul>
+                                </div>
+                                <p class="ret-success" id="profileMsg" role="status" hidden></p>
+                                <div class="ret-actions">
+                                    <button type="button" class="btn-outline" id="editBtn"><i class="fas fa-pen" aria-hidden="true"></i> تعديل بياناتي</button>
+                                    <button type="button" class="link-btn" id="switchBtn">ليس حسابي</button>
+                                </div>
+                            </div>
+                            <div class="edit-card" id="editCard" hidden>
+                                <strong class="ret-sub">تعديل بياناتي</strong>
+                                <div class="form-group">
+                                    <label for="editName">الاسم بالكامل</label>
+                                    <input type="text" id="editName" maxlength="100" autocomplete="off">
+                                    <div class="field-error" data-for="editName"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editPhone">رقم الهاتف</label>
+                                    <input type="tel" id="editPhone" inputmode="tel" dir="ltr" style="text-align:right" autocomplete="off">
+                                    <div class="field-error" data-for="editPhone"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editAddress">العنوان</label>
+                                    <textarea id="editAddress" rows="3" maxlength="300" placeholder="العنوان بالكامل مع المعالم"></textarea>
+                                    <div class="field-error" data-for="editAddress"></div>
+                                </div>
+                                <div class="field-error" data-for="edit"></div>
+                                <div class="ret-actions">
+                                    <button type="button" class="btn-solid-sm" id="saveEditBtn">حفظ التعديلات <i class="fas fa-check" aria-hidden="true"></i></button>
+                                    <button type="button" class="link-btn" id="cancelEditBtn">إلغاء</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceType"><i class="fas fa-concierge-bell" aria-hidden="true"></i> نوع الخدمة</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="">اختر الخدمة</option>
+%%service_options%%
+                        </select>
+                        <div class="field-error" data-for="serviceType"></div>
+                    </div>
+                    <fieldset class="form-group" style="border:0;padding:0;min-width:0">
+                        <legend style="font-weight:700;margin-bottom:8px"><i class="fas fa-calendar-alt" aria-hidden="true"></i> ميعاد الاستلام المفضل</legend>
+                        <div class="time-options">
+%%time_options%%
+                        </div>
+                    </fieldset>
+                    <div class="hp-field" aria-hidden="true">
+                        <label for="company">لا تملأ هذا الحقل</label>
+                        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="submit-btn">تأكيد الطلب <i class="fas fa-check" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <div class="confirmation-modal" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-content">
+            <button type="button" class="close-modal" id="closeModalBtn" aria-label="إغلاق">&times;</button>
+            <div class="modal-icon"><i class="fas fa-check-circle" aria-hidden="true"></i></div>
+            <h2 id="modalTitle">تم استلام طلبك بنجاح!</h2>
+            <p>شكرًا <strong id="modalCustomerName"></strong> على ثقتك بنا</p>
+            <p>سيقوم مندوبنا بالاتصال بك على الرقم <strong id="modalCustomerPhone" dir="ltr"></strong></p>
+            <p>وسيتم الاستلام من العنوان المحدد في ميعاد <strong id="modalCustomerTime"></strong></p>
+            <p class="note" style="margin-top: 10px; color: #6c757d;" id="modalNote">ملاحظة: سيتصل بك المندوب خلال %%response_hours%% ساعات لتأكيد ميعاد الاستلام</p>
+            <a class="modal-wa" id="modalWa" href="#" target="_blank" rel="noopener noreferrer" hidden><i class="fab fa-whatsapp" aria-hidden="true"></i> تابعنا على واتساب</a>
+            <br>
+            <button type="button" class="modal-close-btn" id="modalConfirmBtn">حسنًا</button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img class="brand-logo" src="/assets/4seasons-emblem.png" alt="شعار %%business_name%%" width="64" height="64" loading="lazy">
+                <div class="logo-name" style="margin-top: 10px;">%%business_name%%</div>
+                <p style="margin-top: 15px;">مغسلة %%business_name%% تقدم خدمات تنظيف الملابس والسجاد والبطانيات والستائر بأعلى معايير الجودة، مع استلام من المنزل وتسليم خلال %%turnaround_days%% أيام من يوم الاستلام.</p>
+            </div>
+            <div class="footer-links">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات والأسعار</a></li>
+                    <li><a href="#gallery">معرض الأعمال</a></li>
+                    <li><a href="#order">طلب خدمة</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>تواصل معنا</h3>
+                %%footer_contact%%
+                <div class="social-icons">%%social%%</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; %%year%% %%business_name%% مغسلة الملابس والسجاد والبطانيات. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="/site.js?v=%%assetv%%" defer></script>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b2238" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="4Seasons" />
+  <title>4Seasons | نظام المغسلة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- أيقونات الواجهة -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></symbol>
+      <symbol id="i-pos" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h9.6a1 1 0 0 0 1-.8L21 7H6"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7.5 8 6 8-6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.6 3.2-5.5 6.5-5.5s6 1.9 6.5 5.5"/><path d="M16 4.7a3.5 3.5 0 0 1 0 6.6"/><path d="M18 14.8c2.1.6 3.4 2.4 3.7 5.2"/></symbol>
+      <symbol id="i-orders" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 6h9M19 6h1M4 12h3M13 12h7M4 18h11M21 18h-1"/><circle cx="16" cy="6" r="2.2"/><circle cx="10" cy="12" r="2.2"/><circle cx="18" cy="18" r="2.2"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="m16 8 4 4-4 4M20 12H9"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4"/><path d="M6.6 6.7C3.7 8.5 2 12 2 12s3.6 7 10 7c1.7 0 3.2-.4 4.5-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2z"/><path d="M13 9h4.5L21 12.5V16h-8"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+      <symbol id="i-ruler" viewBox="0 0 24 24"><path d="m3 17 14-14 4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/></symbol>
+      <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2-2h12v4"/><path d="M4 7v11a2 2 0 0 0 2 2h14V9H6a2 2 0 0 1-2-2z"/><circle cx="16.5" cy="14.5" r="1.2"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+      <symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v6H7z"/></symbol>
+      <symbol id="i-barcode" viewBox="0 0 24 24"><path d="M4 5v14M7 5v14M11 5v14M14 5v14M17 5v14M20 5v14"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></symbol>
+      <symbol id="i-package" viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+      <symbol id="i-user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.5-3.6 3.2-5.5 6.5-5.5s6 1.9 6.5 5.5"/><path d="M19 8v6M16 11h6"/></symbol>
+      <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.4-1.6 1.6-2.4 3-2.4s2.6.8 3 2.4M15 10h3M15 13h3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6.5 7l1 13h9l1-13"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.6-4 3.7-6 7.5-6s6.9 2 7.5 6"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.01"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- شاشة الدخول -->
+  <section id="login-screen" class="login-screen" aria-label="تسجيل الدخول">
+    <div class="login-brand">
+      <img class="login-logo" src="logo.png" alt="4Seasons Laundry" width="180" height="158" />
+    </div>
+
+    <form id="login-form" class="login-card" autocomplete="on" novalidate>
+      <p class="eyebrow">نظام الإدارة والكاشير</p>
+      <h1>تسجيل الدخول</h1>
+      <p class="muted">أدخل بياناتك للمتابعة إلى النظام.</p>
+
+      <label for="login-username">اسم المستخدم
+        <span class="field">
+          <svg class="ico" aria-hidden="true"><use href="#i-user"/></svg>
+          <input id="login-username" required autocomplete="username" autocapitalize="off" spellcheck="false" placeholder="مثال: cashier" />
+        </span>
+      </label>
+      <label for="login-password">كلمة المرور
+        <span class="field">
+          <svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>
+          <input id="login-password" required type="password" autocomplete="current-password" placeholder="••••••••" dir="ltr" />
+          <button type="button" id="toggle-pass" class="field-btn" aria-label="إظهار كلمة المرور"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></button>
+        </span>
+      </label>
+
+      <p id="login-error" class="login-error" role="alert"></p>
+      <button class="primary full lg" type="submit">دخول للنظام</button>
+
+    </form>
+    <p class="login-foot">© 4Seasons Laundry &amp; Care</p>
+  </section>
+
+  <div class="app-shell">
+    <div class="scrim" id="menu-scrim" hidden></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-badge"><img src="logo-emblem.png" alt="" width="46" height="45" /></span>
+        <div><b>SEASONS</b><small>LAUNDRY &amp; CARE</small></div>
+      </div>
+
+      <nav id="nav" aria-label="القائمة الرئيسية">
+        <button class="nav-item active" data-view="dashboard"><svg class="ico" aria-hidden="true"><use href="#i-home"/></svg><span>الرئيسية</span></button>
+        <button class="nav-item" data-view="pos"><svg class="ico" aria-hidden="true"><use href="#i-pos"/></svg><span>الكاشير</span></button>
+        <button class="nav-item" data-view="customers"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span>العملاء</span></button>
+        <button class="nav-item" data-view="orders"><svg class="ico" aria-hidden="true"><use href="#i-orders"/></svg><span>الطلبات</span></button>
+        <button class="nav-item" data-view="requests"><svg class="ico" aria-hidden="true"><use href="#i-package"/></svg><span>طلبات الموقع</span><b class="nav-badge" id="requests-badge" hidden></b></button>
+        <button class="nav-item" data-view="messages"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>الرسائل</span><b class="nav-badge" id="messages-badge" hidden></b></button>
+        <button class="nav-item" data-view="settings"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg><span>الإعدادات</span></button>
+      </nav>
+
+      <div class="profile">
+        <div class="avatar" id="role-avatar">م</div>
+        <div><b id="sidebar-user">—</b><small id="sidebar-role"></small></div>
+      </div>
+    </aside>
+
+    <main id="main">
+      <header class="topbar">
+        <button type="button" class="icon-btn menu-toggle" id="menu-toggle" aria-label="القائمة" aria-controls="sidebar" aria-expanded="true"><svg class="ico" aria-hidden="true"><use href="#i-menu"/></svg></button>
+        <div class="topbar-title">
+          <p class="eyebrow" id="today"></p>
+          <h1 id="page-title">أهلاً بك في 4Seasons</h1>
+        </div>
+        <div class="header-actions">
+          <span class="user-chip"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg><span id="current-user">—</span></span>
+          <button class="secondary" id="change-password" type="button"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg><span>كلمة المرور</span></button>
+          <button class="secondary logout" id="logout" type="button"><svg class="ico" aria-hidden="true"><use href="#i-logout"/></svg><span>خروج</span></button>
+        </div>
+      </header>
+
+      <!-- الرئيسية -->
+      <section id="dashboard" class="view active" aria-label="الرئيسية">
+        <div class="hero">
+          <div>
+            <span class="pill" id="branch-pill">4Seasons</span>
+            <h2>إدارة أسهل، خدمة أدق.</h2>
+            <p>تابع شغل المغسلة، الطلبات والتسليم من مكان واحد.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="primary" data-go="pos" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>إنشاء طلب جديد</button>
+            <button class="ghost-light" data-go="orders" type="button">متابعة الطلبات</button>
+          </div>
+        </div>
+
+        <div class="stats">
+          <article><span class="stat-ico blue"><svg class="ico"><use href="#i-trend"/></svg></span><div><span class="stat-label">مبيعات اليوم</span><strong id="stat-sales">٠ ج.م</strong><small id="stat-sales-sub"></small></div></article>
+          <article><span class="stat-ico amber"><svg class="ico"><use href="#i-package"/></svg></span><div><span class="stat-label">طلبات نشطة</span><strong id="stat-active">٠</strong><small id="stat-active-sub"></small></div></article>
+          <article><span class="stat-ico red"><svg class="ico"><use href="#i-wallet"/></svg></span><div><span class="stat-label">تحصيلات معلّقة</span><strong id="stat-due">٠ ج.م</strong><small id="stat-due-sub"></small></div></article>
+          <article><span class="stat-ico green"><svg class="ico"><use href="#i-truck"/></svg></span><div><span class="stat-label">تسليمات اليوم</span><strong id="stat-deliveries">٠</strong><small id="stat-deliveries-sub"></small></div></article>
+        </div>
+
+        <div class="grid-2">
+          <section class="card">
+            <div class="card-title"><h3>الطلبات الأخيرة</h3><button class="text-btn" data-go="orders" type="button">عرض الكل</button></div>
+            <div class="mini-orders" id="recent-orders"></div>
+          </section>
+          <section class="card">
+            <div class="card-title"><h3>تنبيهات اليوم</h3></div>
+            <div class="alerts" id="alerts"></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- الكاشير -->
+      <section id="pos" class="view" aria-label="الكاشير">
+        <div class="section-head">
+          <div><p class="eyebrow">نقطة البيع</p><h2>إنشاء طلب جديد</h2></div>
+          <button class="secondary" id="clear-order" type="button">إلغاء الطلب</button>
+        </div>
+
+        <div class="pos-layout">
+          <section class="card customer-panel">
+            <div class="card-title"><h3><span class="step">1</span>بيانات العميل</h3><button id="new-customer" class="text-btn" type="button"><svg class="ico" aria-hidden="true"><use href="#i-user-plus"/></svg>عميل جديد</button></div>
+
+            <label for="customer-search">ابحث بالاسم أو الهاتف أو رقم العميل، أو امسح الباركود
+              <span class="field search-field">
+                <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+                <input id="customer-search" placeholder="مثال: 4S-C-000124 أو 010..." autocomplete="off" role="combobox" aria-expanded="false" aria-controls="customer-suggest" />
+                <span id="customer-suggest" class="suggest" role="listbox" hidden></span>
+              </span>
+            </label>
+
+            <div id="selected-customer" class="empty-state">ابحث عن عميل أو أضف عميلًا جديدًا</div>
+
+            <div class="order-fields">
+              <label for="zone">منطقة التوصيل<select id="zone"><option value="">بدون توصيل</option></select></label>
+              <label for="delivery-date">موعد التسليم<input id="delivery-date" type="date" /></label>
+            </div>
+            <label for="order-note">ملاحظات الطلب<textarea id="order-note" placeholder="اختياري — مثال: تسليم بعد الظهر"></textarea></label>
+          </section>
+
+          <section class="card items-panel">
+            <div class="card-title"><h3><span class="step">2</span>القطع والخدمات</h3><span class="scan-tip"><svg class="ico" aria-hidden="true"><use href="#i-barcode"/></svg>امسح باركود الخدمة أو اخترها</span></div>
+
+            <div class="service-picker">
+              <span class="field search-field"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input id="service-search" placeholder="ابحث في الخدمات..." aria-label="ابحث في الخدمات" autocomplete="off" /></span>
+              <button id="add-service" class="primary small" type="button">إضافة</button>
+            </div>
+            <div id="service-cats" class="cats" aria-label="تصنيفات الخدمات"></div>
+            <div id="service-options" class="chips"></div>
+
+            <div id="cart" class="cart empty-state">لا توجد قطع في الطلب بعد</div>
+            <button id="add-fee" class="secondary full" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>رسوم إضافية (بقع / ترزي / غيره)</button>
+          </section>
+
+          <aside class="card invoice">
+            <h3><span class="step">3</span>ملخص الفاتورة</h3>
+            <div class="totals">
+              <p><span>إجمالي الخدمات</span><b id="subtotal">٠ ج.م</b></p>
+              <p><span>التوصيل</span><b id="delivery-fee">٠ ج.م</b></p>
+              <p class="grand"><span>الإجمالي</span><b id="grand-total">٠ ج.م</b></p>
+            </div>
+            <p id="pending-note" class="pending-note" hidden></p>
+            <label for="payment">طريقة الدفع
+              <select id="payment">
+                <option value="cash">نقدي</option><option value="vodafone_cash">فودافون كاش</option><option value="instapay">إنستا باي</option><option value="deferred">آجل (عند التسليم)</option>
+              </select>
+            </label>
+            <label for="paid">المبلغ المدفوع (يمكن تقليله لدفعة جزئية)<input id="paid" type="number" min="0" step="any" value="0" inputmode="decimal" /></label>
+            <p class="totals remaining-row"><span>المتبقي على العميل</span><b id="remaining">٠ ج.م</b></p>
+            <button id="save-order" class="primary full lg" type="button"><svg class="ico" aria-hidden="true"><use href="#i-receipt"/></svg>حفظ وطباعة الفاتورة</button>
+            <small>سيُنشأ باركود لكل قطعة في الطلب.</small>
+          </aside>
+        </div>
+      </section>
+
+      <!-- العملاء -->
+      <section id="customers" class="view" aria-label="العملاء">
+        <div class="section-head">
+          <div><p class="eyebrow">قاعدة العملاء</p><h2>العملاء والبطاقات الرقمية</h2></div>
+          <button id="add-customer-top" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-user-plus"/></svg>إضافة عميل</button>
+        </div>
+        <div class="card flush">
+          <div class="table-tools">
+            <span class="field search-field"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input id="customer-filter" placeholder="ابحث بالاسم، الهاتف أو رقم العميل" aria-label="بحث في العملاء" /></span>
+            <label class="check-inline"><input type="checkbox" id="debtors-only" /> عليهم رصيد فقط</label><span id="customer-count" class="count"></span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>رقم العميل</th><th>العميل</th><th>الهاتف</th><th>المنطقة</th><th>الرصيد المستحق</th><th class="actions-col">إجراءات</th></tr></thead>
+              <tbody id="customer-table"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="customer-pager"></div>
+        </div>
+      </section>
+
+      <!-- الطلبات -->
+      <section id="orders" class="view" aria-label="الطلبات">
+        <div class="section-head">
+          <div><p class="eyebrow">تشغيل المغسلة</p><h2>تتبّع الطلبات من الاستلام للتسليم</h2></div>
+        </div>
+        <div class="card flush">
+          <div class="table-tools">
+            <span class="field search-field"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><input id="order-search" placeholder="ابحث برقم الطلب أو اسم العميل" aria-label="بحث في الطلبات" /></span>
+            <div id="status-tabs" class="tabs" role="tablist" aria-label="حالة الطلب"></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>رقم الطلب</th><th>العميل</th><th>القطع</th><th>موعد التسليم</th><th>الحالة</th><th>الإجمالي</th><th class="actions-col">إجراء</th></tr></thead>
+              <tbody id="orders-table"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="orders-pager"></div>
+        </div>
+      </section>
+
+      <!-- طلبات الموقع -->
+      <section id="requests" class="view" aria-label="طلبات الموقع">
+        <div class="section-head">
+          <div><p class="eyebrow">من الموقع الإلكتروني</p><h2>طلبات الاستلام الواردة</h2></div>
+          <button id="refresh-requests" class="secondary" type="button">تحديث</button>
+        </div>
+        <div class="card otp-card" id="otp-card" hidden>
+          <div class="otp-head"><b>أكواد تحقق مطلوبة من عملاء سابقين</b><small>ابعت الكود للعميل على واتساب على رقمه المسجّل، وماتديهوش لحد غيره.</small></div>
+          <ul class="otp-list" id="otp-list"></ul>
+        </div>
+        <div class="card flush">
+          <div class="table-tools"><div id="request-tabs" class="tabs" aria-label="حالة الطلب"></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>العميل</th><th>الهاتف</th><th>العنوان</th><th>الخدمة</th><th>الميعاد</th><th>وصل في</th><th>الحالة</th><th class="actions-col">إجراء</th></tr></thead>
+              <tbody id="requests-table"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="requests-pager"></div>
+        </div>
+      </section>
+
+      <!-- الرسائل الداخلية -->
+      <section id="messages" class="view" aria-label="الرسائل الداخلية">
+        <div class="section-head">
+          <div><p class="eyebrow">بين الموظفين والمدير</p><h2>الرسائل</h2></div>
+          <button id="new-message-btn" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>رسالة جديدة</button>
+        </div>
+        <div class="card flush">
+          <div class="table-tools"><div id="message-tabs" class="tabs" aria-label="الصندوق">
+            <button type="button" class="tab active" data-box="inbox">الوارد<span class="n" id="inbox-count">0</span></button>
+            <button type="button" class="tab" data-box="sent">الصادر</button>
+          </div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th id="msg-who-th">من</th><th>الموضوع</th><th>التاريخ</th></tr></thead>
+              <tbody id="messages-table"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="messages-pager"></div>
+        </div>
+      </section>
+
+      <!-- الإعدادات -->
+      <section id="settings" class="view" aria-label="الإعدادات">
+        <div class="section-head">
+          <div><p class="eyebrow">إدارة النظام</p><h2>الإعدادات</h2></div>
+        </div>
+        <div id="settings-tabs" class="tabs settings-tabs" aria-label="أقسام الإعدادات">
+          <button type="button" class="tab active" data-stab="services">الخدمات والأسعار</button>
+          <button type="button" class="tab" data-stab="zones">المناطق والتوصيل</button>
+          <button type="button" class="tab" data-stab="business">بيانات المغسلة والموقع</button>
+          <button type="button" class="tab" data-stab="users">المستخدمون</button>
+          <button type="button" class="tab" data-stab="system">النسخ الاحتياطي والسجل</button>
+        </div>
+
+        <div class="card flush stab" id="stab-services">
+          <div class="table-tools">
+            <p class="muted">أي تعديل في الأسعار يظهر فورًا في الكاشير وفي الموقع العام. الفواتير القديمة لا تتأثر.</p>
+            <button id="add-service-btn" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>إضافة خدمة</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>الخدمة</th><th>التصنيف</th><th>الوحدة</th><th>السعر</th><th>الحالة</th><th class="actions-col">إجراء</th></tr></thead>
+              <tbody id="services-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card stab" id="stab-zones" hidden>
+          <p class="muted">رسوم الاستلام والتسليم تُضاف تلقائيًا عند اختيار المنطقة في الكاشير.</p>
+          <div id="zones-list" class="zones-list"></div>
+          <div class="settings-actions">
+            <span class="field add-zone"><input id="new-zone-name" placeholder="اسم منطقة جديدة" aria-label="اسم منطقة جديدة" /></span>
+            <button id="add-zone" class="secondary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>إضافة منطقة</button>
+            <button id="save-zones" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>حفظ التعديلات</button>
+          </div>
+        </div>
+
+        <div class="card stab" id="stab-business" hidden>
+          <p class="muted">هذه البيانات تظهر في الموقع العام وفي الفواتير.</p>
+          <form id="business-form" class="form-grid" novalidate>
+            <label for="s-business_name">اسم المغسلة<input id="s-business_name" data-key="business_name" /></label>
+            <label for="s-branch">الفرع<input id="s-branch" data-key="branch" /></label>
+            <label for="s-phone">هاتف الحجز<input id="s-phone" data-key="phone" dir="ltr" inputmode="tel" /></label>
+            <label for="s-whatsapp">رقم واتساب<input id="s-whatsapp" data-key="whatsapp" dir="ltr" inputmode="tel" /></label>
+            <label for="s-maps_url">رابط الخريطة<input id="s-maps_url" data-key="maps_url" dir="ltr" /></label>
+            <label for="s-facebook_url">رابط فيسبوك<input id="s-facebook_url" data-key="facebook_url" dir="ltr" /></label>
+            <label for="s-hours_text">ساعات خدمة العملاء<input id="s-hours_text" data-key="hours_text" /></label>
+            <label for="s-turnaround_days">أيام التسليم المعتادة<input id="s-turnaround_days" data-key="turnaround_days" type="number" min="1" max="30" /></label>
+            <label for="s-response_hours">الرد على طلبات الموقع خلال (ساعات)<input id="s-response_hours" data-key="response_hours" type="number" min="1" max="72" /></label>
+            <label class="wide" for="s-business_tagline">وصف النشاط (يظهر في محركات البحث)<input id="s-business_tagline" data-key="business_tagline" /></label>
+            <label class="wide" for="s-coverage_text">مناطق التغطية<input id="s-coverage_text" data-key="coverage_text" /></label>
+            <label class="wide" for="s-price_notice">تنبيه الأسعار<textarea id="s-price_notice" data-key="price_notice"></textarea></label>
+            <label class="wide" for="s-delivery_notice">تنبيه التوصيل<input id="s-delivery_notice" data-key="delivery_notice" /></label>
+            <label class="wide" for="s-extras_notice">تنبيه الخدمات الإضافية<input id="s-extras_notice" data-key="extras_notice" /></label>
+            <div class="wide settings-actions"><button class="primary" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>حفظ البيانات</button></div>
+          </form>
+        </div>
+
+        <div class="card flush stab" id="stab-users" hidden>
+          <div class="table-tools">
+            <p class="muted">كل موظف له حساب مستقل. عند إنشاء حساب أو إعادة ضبط كلمة المرور تظهر كلمة مرور مؤقتة مرة واحدة ويُطلب تغييرها عند أول دخول.</p>
+            <button id="add-user-btn" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-user-plus"/></svg>إضافة مستخدم</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>المستخدم</th><th>الاسم</th><th>الدور</th><th>الصلاحيات</th><th>آخر دخول</th><th>الحالة</th><th class="actions-col">إجراء</th></tr></thead>
+              <tbody id="users-table"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="stab" id="stab-system" hidden>
+          <div class="card data-card">
+            <div class="card-title"><div><h3>النسخ الاحتياطي</h3><p class="muted">تُحفظ البيانات في قاعدة بيانات على الخادم، وتؤخذ نسخة تلقائية يوميًا. يمكنك أيضًا تنزيل نسخة كاملة الآن.</p></div></div>
+            <div class="settings-actions">
+              <button id="download-backup" class="secondary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>تنزيل نسخة احتياطية</button>
+            </div>
+          </div>
+          <div class="card flush">
+            <div class="table-tools"><h3>آخر العمليات</h3><button id="refresh-audit" class="text-btn" type="button">تحديث</button></div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>الوقت</th><th>المستخدم</th><th>العملية</th><th>التفاصيل</th></tr></thead>
+                <tbody id="audit-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- عميل جديد -->
+  <dialog id="customer-dialog" aria-labelledby="cd-title">
+    <form id="customer-form" novalidate>
+      <input type="hidden" id="c-id" />
+      <div class="modal-head"><h2 id="cd-title">عميل جديد</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted" id="cd-sub">سينشئ النظام رقم عميل وباركودًا تلقائيًا.</p>
+      <label for="c-name">الاسم الكامل<input required id="c-name" autocomplete="off" /></label>
+      <label for="c-phone">رقم الهاتف<input required id="c-phone" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx" autocomplete="off" /></label>
+      <label for="c-address">العنوان بالتفصيل<textarea id="c-address"></textarea></label>
+      <label for="c-zone">المنطقة<select id="c-zone"></select></label>
+      <label for="c-notes">ملاحظات<input id="c-notes" autocomplete="off" /></label>
+      <button class="primary full lg" type="submit" id="c-submit">حفظ وإنشاء البطاقة</button>
+    </form>
+  </dialog>
+
+  <!-- رسوم إضافية -->
+  <dialog id="fee-dialog" aria-labelledby="fd-title">
+    <form id="fee-form" novalidate>
+      <div class="modal-head"><h2 id="fd-title">إضافة رسوم</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="fee-type">النوع<select id="fee-type"><option>إزالة بقع صعبة</option><option>خدمة ترزي</option><option>صبغة</option><option>طباعة تي شيرت</option><option>رسوم أخرى</option></select></label>
+      <label for="fee-value">قيمة الرسوم بالجنيه<input id="fee-value" required type="number" min="1" inputmode="decimal" /></label>
+      <label for="fee-note">ملاحظة / سبب الإضافة<input id="fee-note" placeholder="مثال: بقعة زيت صعبة" autocomplete="off" /></label>
+      <button class="primary full lg" type="submit">إضافة للطلب</button>
+    </form>
+  </dialog>
+
+  <!-- بطاقة العميل -->
+  <dialog id="card-dialog" aria-labelledby="digital-name">
+    <div id="digital-card">
+      <div class="card-brand"><span class="card-logo"><img src="logo.png" alt="4Seasons Laundry" width="190" height="167" /></span></div>
+      <div class="card-id">
+        <p id="digital-name"></p>
+        <strong id="digital-id"></strong>
+        <small>رقم العميل</small>
+      </div>
+      <div id="barcode" class="barcode-plate" aria-label="باركود العميل"></div>
+      <p class="barcode-text" id="barcode-text"></p>
+    </div>
+    <div class="dialog-actions">
+      <button id="print-card" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-printer"/></svg>طباعة / حفظ PDF</button>
+      <button id="close-card" class="secondary" type="button" data-close>إغلاق</button>
+    </div>
+  </dialog>
+
+  <!-- إدخال القياس -->
+  <dialog id="measure-dialog" aria-labelledby="md-title">
+    <form id="measure-form" novalidate>
+      <div class="modal-head"><h2 id="md-title">إدخال قياس السجاد</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted" id="measure-sub"></p>
+      <div id="measure-fields"></div>
+      <p class="totals measure-total"><span>إجمالي السجاد</span><b id="measure-total">٠ ج.م</b></p>
+      <button class="primary full lg" type="submit">حفظ القياس وبدء التنفيذ</button>
+    </form>
+  </dialog>
+
+  <!-- تسجيل دفعة -->
+  <dialog id="payment-dialog" aria-labelledby="pd-title">
+    <form id="payment-form" novalidate>
+      <div class="modal-head"><h2 id="pd-title">تسجيل دفعة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted"><b id="pay-customer"></b> — الرصيد المستحق: <b id="pay-balance"></b></p>
+      <label for="pay-amount">المبلغ المحصّل بالجنيه<input id="pay-amount" required type="number" min="1" step="any" inputmode="decimal" /></label>
+      <label for="pay-method">طريقة التحصيل<select id="pay-method"><option value="cash">نقدي</option><option value="vodafone_cash">فودافون كاش</option><option value="instapay">إنستا باي</option></select></label>
+      <button class="primary full lg" type="submit">تأكيد التحصيل</button>
+    </form>
+  </dialog>
+
+  <!-- الفاتورة -->
+  <dialog id="invoice-dialog" class="wide" aria-label="الفاتورة">
+    <div class="modal-head no-print"><h2 id="invoice-title">فاتورة الطلب</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <div id="invoice-sheet" class="receipt"></div>
+    <div id="labels-sheet" class="labels-sheet"></div>
+    <div class="dialog-actions no-print">
+      <button id="print-invoice" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-printer"/></svg>طباعة الفاتورة</button>
+      <button id="print-labels" class="secondary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-barcode"/></svg>طباعة ملصقات القطع</button>
+    </div>
+  </dialog>
+
+  <!-- تغيير كلمة المرور -->
+  <dialog id="password-dialog" aria-labelledby="pw-title">
+    <form id="password-form" novalidate>
+      <div class="modal-head"><h2 id="pw-title">تغيير كلمة المرور</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق" id="pw-close"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted" id="pw-sub">استخدم 8 أحرف على الأقل، بها حروف وأرقام.</p>
+      <label for="pw-current">كلمة المرور الحالية<input id="pw-current" type="password" autocomplete="current-password" dir="ltr" required /></label>
+      <label for="pw-new">كلمة المرور الجديدة<input id="pw-new" type="password" autocomplete="new-password" dir="ltr" required /></label>
+      <label for="pw-confirm">تأكيد كلمة المرور الجديدة<input id="pw-confirm" type="password" autocomplete="new-password" dir="ltr" required /></label>
+      <p id="pw-error" class="login-error" role="alert"></p>
+      <button class="primary full lg" type="submit">حفظ كلمة المرور</button>
+    </form>
+  </dialog>
+
+  <!-- خدمة -->
+  <dialog id="service-dialog" aria-labelledby="sd-title">
+    <form id="service-form" novalidate>
+      <input type="hidden" id="sv-id" />
+      <div class="modal-head"><h2 id="sd-title">خدمة جديدة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="sv-name">اسم الخدمة<input id="sv-name" required autocomplete="off" /></label>
+      <div class="order-fields">
+        <label for="sv-category">التصنيف<select id="sv-category"></select></label>
+        <label for="sv-subgroup">مجموعة فرعية (اختياري)<input id="sv-subgroup" autocomplete="off" /></label>
+        <label for="sv-unit">الوحدة<select id="sv-unit"><option value="piece">قطعة</option><option value="meter">متر (ستائر)</option><option value="m2">متر مربع (سجاد)</option><option value="service">خدمة</option></select></label>
+        <label for="sv-pricing">نوع التسعير<select id="sv-pricing"><option value="fixed">سعر ثابت</option><option value="range">يتراوح بين سعرين</option><option value="quote">بعد المعاينة</option></select></label>
+        <label for="sv-min">السعر (أو أقل سعر) بالجنيه<input id="sv-min" type="number" min="0" step="any" inputmode="decimal" /></label>
+        <label for="sv-max">أعلى سعر بالجنيه<input id="sv-max" type="number" min="0" step="any" inputmode="decimal" /></label>
+      </div>
+      <label for="sv-public">نص يظهر بدل السعر في الموقع (اختياري)<input id="sv-public" placeholder="مثال: حسب الاتفاق" autocomplete="off" /></label>
+      <label class="check-inline"><input type="checkbox" id="sv-show" /> يظهر في الموقع العام</label>
+      <label class="check-inline"><input type="checkbox" id="sv-active" /> مفعّل في الكاشير</label>
+      <button class="primary full lg" type="submit">حفظ الخدمة</button>
+    </form>
+  </dialog>
+
+  <!-- مستخدم -->
+  <dialog id="user-dialog" aria-labelledby="ud-title">
+    <form id="user-form" novalidate>
+      <div class="modal-head"><h2 id="ud-title">مستخدم جديد</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="u-username">اسم المستخدم (إنجليزي)<input id="u-username" dir="ltr" required autocomplete="off" autocapitalize="off" /></label>
+      <label for="u-name">الاسم<input id="u-name" required autocomplete="off" /></label>
+      <label for="u-role">الدور<select id="u-role"><option value="cashier">كاشير</option><option value="accountant">محاسب</option><option value="manager">مدير</option></select></label>
+      <label for="u-password">كلمة المرور (اختياري)<input id="u-password" type="text" dir="ltr" autocomplete="new-password" placeholder="سيب فاضي لتوليد كلمة مؤقتة تلقائيًا" /></label>
+      <p class="muted small" id="u-password-hint">لو كتبت كلمة مرور: 8 أحرف على الأقل بحروف وأرقام. الموظف هيغيّرها عند أول دخول.</p>
+      <fieldset class="perm-box"><legend>الصلاحيات</legend><div id="u-perms" class="perm-grid"></div><p class="muted small" id="u-perms-note" hidden>المدير عنده كل الصلاحيات دايمًا.</p></fieldset>
+      <p class="form-error" id="u-error" role="alert"></p>
+      <button class="primary full lg" type="submit">إنشاء الحساب</button>
+    </form>
+  </dialog>
+
+  <!-- صلاحيات موظف -->
+  <dialog id="perm-dialog" aria-labelledby="pm-title">
+    <form id="perm-form" novalidate>
+      <div class="modal-head"><h2 id="pm-title">صلاحيات الموظف</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted" id="pm-sub"></p>
+      <div id="pm-perms" class="perm-grid"></div>
+      <p class="muted small">التعديل بيسري فورًا على حساب الموظف. الإعدادات وإدارة المستخدمين للمدير فقط.</p>
+      <div class="dialog-actions"><button type="button" class="secondary" id="pm-default">رجوع لصلاحيات الدور</button><button class="primary" type="submit">حفظ الصلاحيات</button></div>
+    </form>
+  </dialog>
+
+  <!-- كلمة مرور مؤقتة -->
+  <dialog id="temp-dialog" class="narrow" aria-labelledby="tp-title">
+    <h2 id="tp-title">كلمة المرور المؤقتة</h2>
+    <p class="muted" id="tp-sub"></p>
+    <p class="temp-password" id="tp-pass" dir="ltr"></p>
+    <p class="muted">لن تظهر مرة أخرى. سلّمها للموظف، وسيُطلب منه تغييرها عند أول دخول.</p>
+    <div class="dialog-actions"><button id="tp-copy" class="secondary" type="button">نسخ</button><button class="primary" type="button" data-close>تم</button></div>
+  </dialog>
+
+  <!-- رسالة جديدة -->
+  <dialog id="compose-dialog" aria-labelledby="cp-title">
+    <form id="compose-form" novalidate>
+      <div class="modal-head"><h2 id="cp-title">رسالة جديدة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <fieldset class="perm-box"><legend>إلى</legend>
+        <label class="perm-item"><input type="checkbox" id="cp-all"> <span>الكل</span></label>
+        <div id="cp-contacts" class="perm-grid"></div>
+      </fieldset>
+      <label for="cp-subject">الموضوع<input id="cp-subject" maxlength="120" required autocomplete="off" /></label>
+      <label for="cp-body">الرسالة<textarea id="cp-body" rows="5" maxlength="4000" required></textarea></label>
+      <p class="form-error" id="cp-error" role="alert"></p>
+      <button class="primary full lg" type="submit">إرسال</button>
+    </form>
+  </dialog>
+
+  <!-- قراءة رسالة -->
+  <dialog id="read-dialog" class="wide-md" aria-labelledby="rd-title">
+    <div class="modal-head"><h2 id="rd-title">رسالة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+    <p class="muted small" id="rd-meta"></p>
+    <div id="rd-thread" class="thread"></div>
+    <form id="reply-form" novalidate>
+      <label for="rd-reply">رد<textarea id="rd-reply" rows="3" maxlength="4000" placeholder="اكتب ردك..."></textarea></label>
+      <div class="dialog-actions"><button class="primary" type="submit">إرسال الرد</button><button class="secondary danger-text" type="button" id="rd-delete">حذف</button></div>
+    </form>
+  </dialog>
+
+  <!-- تحكم المدير في طلب -->
+  <dialog id="oadmin-dialog" aria-labelledby="oa-title">
+    <form id="oadmin-form" novalidate>
+      <div class="modal-head"><h2 id="oa-title">تحكم في الطلب</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted small" id="oa-sub"></p>
+      <label for="oa-status">الحالة<select id="oa-status"></select></label>
+      <div class="form-grid">
+        <label for="oa-total">الإجمالي (ج.م)<input id="oa-total" type="number" min="0" step="0.5" inputmode="decimal" /></label>
+        <label for="oa-paid">المدفوع (ج.م)<input id="oa-paid" type="number" min="0" step="0.5" inputmode="decimal" /></label>
+        <label for="oa-created">تاريخ الطلب<input id="oa-created" type="date" /></label>
+        <label for="oa-delivery">ميعاد التسليم<input id="oa-delivery" type="date" /></label>
+      </div>
+      <label for="oa-note">ملاحظة<textarea id="oa-note" rows="2" maxlength="500"></textarea></label>
+      <p class="form-error" id="oa-error" role="alert"></p>
+      <div class="dialog-actions"><button class="primary" type="submit">حفظ التعديلات</button><button class="danger" type="button" id="oa-delete">حذف الطلب</button></div>
+    </form>
+  </dialog>
+
+  <!-- تحكم المدير في عميل -->
+  <dialog id="cadmin-dialog" aria-labelledby="ca-title">
+    <form id="cadmin-form" novalidate>
+      <div class="modal-head"><h2 id="ca-title">تحكم في العميل</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted small" id="ca-sub"></p>
+      <label for="ca-opening">مديونية سابقة / رصيد افتتاحي (ج.م)<input id="ca-opening" type="number" min="0" step="0.5" inputmode="decimal" /></label>
+      <p class="form-error" id="ca-error" role="alert"></p>
+      <div class="dialog-actions"><button class="primary" type="submit">حفظ الرصيد</button><button class="danger" type="button" id="ca-delete">حذف العميل</button></div>
+    </form>
+    <strong class="ret-sub">سجل الدفعات</strong>
+    <ul class="pay-list" id="ca-payments"></ul>
+  </dialog>
+
+  <!-- تأكيد -->
+  <dialog id="confirm-dialog" class="narrow" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">تأكيد الإجراء</h2>
+    <p class="muted" id="confirm-msg"></p>
+    <div class="dialog-actions">
+      <button id="confirm-ok" class="primary" type="button">تأكيد</button>
+      <button id="confirm-cancel" class="secondary" type="button">إلغاء</button>
+    </div>
+  </dialog>
+
+  <div id="toasts" class="toast-stack" popover="manual" aria-live="polite"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
