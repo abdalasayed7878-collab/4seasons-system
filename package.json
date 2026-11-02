@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node --disable-warning=ExperimentalWarning server/index.js",
     "dev": "node --disable-warning=ExperimentalWarning --watch server/index.js",
-    "test": "node --disable-warning=ExperimentalWarning --test test/api.test.js test/returning.test.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/api.test.js test/returning.test.js test/hr.test.js",
     "cli": "node --disable-warning=ExperimentalWarning server/cli.js",
     "seed:demo": "node --disable-warning=ExperimentalWarning server/cli.js seed-demo",
     "backup": "node --disable-warning=ExperimentalWarning server/cli.js backup"

@@ -169,6 +169,38 @@ function createApp(db, config) {
   api.put('/users/:id', P('users:manage'), (req, res) => res.json(d.updateUser(actorOf(req), id(req), req.body || {})));
   api.post('/users/:id/reset-password', P('users:manage'), wrap(async (req, res) => res.json(await d.resetPassword(actorOf(req), id(req)))));
 
+  /* ---------- الموظفون والمرتبات (للمدير فقط — صلاحية hr:manage لا تُمنح لغيره) ---------- */
+  const HR = P('hr:manage');
+  const qint = v => (v === undefined || v === '' ? undefined : U.int(v, { field: 'المعرّف', min: 1 }));
+  api.get('/hr/summary', HR, (req, res) => res.json(d.hrSummary()));
+  api.get('/hr/settings', HR, (req, res) => res.json(d.hrGetSettings()));
+  api.put('/hr/settings', HR, (req, res) => res.json(d.hrUpdateSettings(actorOf(req), req.body || {})));
+
+  api.get('/hr/employees', HR, (req, res) => res.json(d.hrListEmployees()));
+  api.post('/hr/employees', HR, (req, res) => res.status(201).json(d.hrCreateEmployee(actorOf(req), req.body || {})));
+  api.put('/hr/employees/:id', HR, (req, res) => res.json(d.hrUpdateEmployee(actorOf(req), id(req), req.body || {})));
+
+  api.get('/hr/attendance', HR, (req, res) => res.json(d.hrGetAttendanceDay(String(req.query.date || U.todayStr()))));
+  api.put('/hr/attendance', HR, (req, res) => res.json(d.hrSaveAttendanceDay(actorOf(req), req.body || {})));
+  api.get('/hr/attendance/month', HR, (req, res) => res.json(d.hrListAttendanceMonth({ month: String(req.query.month || ''), employeeId: req.query.employeeId })));
+
+  api.get('/hr/leaves', HR, (req, res) => res.json(d.hrListLeaves({ employeeId: qint(req.query.employeeId), year: req.query.year ? String(req.query.year).slice(0, 4) : undefined })));
+  api.post('/hr/leaves', HR, (req, res) => res.status(201).json(d.hrCreateLeave(actorOf(req), req.body || {})));
+  api.delete('/hr/leaves/:id', HR, (req, res) => res.json(d.hrDeleteLeave(actorOf(req), id(req))));
+
+  api.get('/hr/adjustments', HR, (req, res) => res.json(d.hrListAdjustments({ month: req.query.month ? String(req.query.month) : undefined, employeeId: qint(req.query.employeeId) })));
+  api.post('/hr/adjustments', HR, (req, res) => res.status(201).json(d.hrCreateAdjustment(actorOf(req), req.body || {})));
+  api.delete('/hr/adjustments/:id', HR, (req, res) => res.json(d.hrDeleteAdjustment(actorOf(req), id(req))));
+
+  api.get('/hr/advances', HR, (req, res) => res.json(d.hrListAdvances({ employeeId: qint(req.query.employeeId), open: req.query.open === '1' })));
+  api.post('/hr/advances', HR, (req, res) => res.status(201).json(d.hrCreateAdvance(actorOf(req), req.body || {})));
+  api.post('/hr/advances/:id/repay', HR, (req, res) => res.json(d.hrRepayAdvance(actorOf(req), id(req), req.body || {})));
+  api.delete('/hr/advances/:id', HR, (req, res) => res.json(d.hrDeleteAdvance(actorOf(req), id(req))));
+
+  api.get('/hr/payroll', HR, (req, res) => res.json(d.hrGetPayroll(String(req.query.month || U.todayStr().slice(0, 7)))));
+  api.post('/hr/payroll/approve', HR, (req, res) => res.json(d.hrApprovePayroll(actorOf(req), req.body || {})));
+  api.delete('/hr/payroll/:id', HR, (req, res) => res.json(d.hrDeletePayroll(actorOf(req), id(req))));
+
   api.get('/audit', P('audit:read'), (req, res) => {
     const pageSize = Math.min(Math.max(+req.query.pageSize || 50, 1), 200);
     const page = Math.max(+req.query.page || 1, 1);

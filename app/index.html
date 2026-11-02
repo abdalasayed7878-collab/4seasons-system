@@ -106,6 +106,7 @@
         <button class="nav-item" data-view="orders"><svg class="ico" aria-hidden="true"><use href="#i-orders"/></svg><span>الطلبات</span></button>
         <button class="nav-item" data-view="requests"><svg class="ico" aria-hidden="true"><use href="#i-package"/></svg><span>طلبات الموقع</span><b class="nav-badge" id="requests-badge" hidden></b></button>
         <button class="nav-item" data-view="messages"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg><span>الرسائل</span><b class="nav-badge" id="messages-badge" hidden></b></button>
+        <button class="nav-item" data-view="hr"><svg class="ico" aria-hidden="true"><use href="#i-id"/></svg><span>الموظفون والمرتبات</span></button>
         <button class="nav-item" data-view="settings"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg><span>الإعدادات</span></button>
       </nav>
 
@@ -306,6 +307,140 @@
             </table>
           </div>
           <div class="pager" id="messages-pager"></div>
+        </div>
+      </section>
+
+      <!-- الموظفون والمرتبات (للمدير فقط) -->
+      <section id="hr" class="view" aria-label="الموظفون والمرتبات">
+        <div class="section-head">
+          <div><p class="eyebrow">للمدير فقط</p><h2>الموظفون والمرتبات</h2></div>
+        </div>
+        <div class="stats">
+          <article><span class="stat-ico blue"><svg class="ico"><use href="#i-users"/></svg></span><div><span class="stat-label">الموظفون العاملون</span><strong id="hr-stat-count">٠</strong><small id="hr-stat-count-sub"></small></div></article>
+          <article><span class="stat-ico amber"><svg class="ico"><use href="#i-wallet"/></svg></span><div><span class="stat-label">إجمالي المرتبات الشهرية</span><strong id="hr-stat-bill">٠ ج.م</strong><small>بدون الإضافي والخصومات</small></div></article>
+          <article><span class="stat-ico red"><svg class="ico"><use href="#i-alert"/></svg></span><div><span class="stat-label">سلف مستحقة على الموظفين</span><strong id="hr-stat-adv">٠ ج.م</strong><small>لم تُسدَّد بعد</small></div></article>
+          <article><span class="stat-ico green"><svg class="ico"><use href="#i-check"/></svg></span><div><span class="stat-label">مرتبات مصروفة هذا الشهر</span><strong id="hr-stat-paid">٠ ج.م</strong><small id="hr-stat-paid-sub"></small></div></article>
+        </div>
+        <div id="hr-tabs" class="tabs settings-tabs" aria-label="أقسام الموظفين">
+          <button type="button" class="tab active" data-htab="employees">الموظفون</button>
+          <button type="button" class="tab" data-htab="attendance">الحضور وساعات العمل</button>
+          <button type="button" class="tab" data-htab="leaves">الإجازات</button>
+          <button type="button" class="tab" data-htab="adjust">الخصومات والمكافآت</button>
+          <button type="button" class="tab" data-htab="advances">السلف</button>
+          <button type="button" class="tab" data-htab="payroll">كشف المرتبات</button>
+          <button type="button" class="tab" data-htab="rules">قواعد الحساب</button>
+        </div>
+
+        <div class="card flush stab" id="htab-employees">
+          <div class="table-tools">
+            <p class="muted">المرتب وساعات العمل وحد السلف ورصيد الإجازة لكل موظف يحددها المدير. الموظف المعطّل يختفي من الحضور والكشوف الجديدة وتبقى سجلاته.</p>
+            <button id="hr-add-emp" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-user-plus"/></svg>إضافة موظف</button>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>الموظف</th><th>الأجر</th><th>ساعات اليوم</th><th>حد السلف / المستحق</th><th>رصيد الإجازة</th><th>الحالة</th><th class="actions-col">إجراء</th></tr></thead>
+            <tbody id="hr-emp-table"></tbody>
+          </table></div>
+        </div>
+
+        <div class="stab" id="htab-attendance" hidden>
+          <div class="card flush">
+            <div class="table-tools">
+              <label class="inline-field" for="hr-att-date">التاريخ<input id="hr-att-date" type="date" /></label>
+              <div class="hr-btns">
+                <button id="hr-att-fill" class="secondary" type="button">تعبئة الساعات المعتادة</button>
+                <button id="hr-att-save" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>حفظ ساعات اليوم</button>
+              </div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>الموظف</th><th>المطلوب</th><th>الساعات الفعلية</th><th>ملاحظة</th></tr></thead>
+              <tbody id="hr-att-table"></tbody>
+            </table></div>
+          </div>
+          <div class="card flush">
+            <div class="table-tools">
+              <h3>سجل ساعات موظف خلال الشهر</h3>
+              <div class="hr-btns">
+                <select id="hr-month-emp" aria-label="الموظف"></select>
+                <input id="hr-month-att" type="month" aria-label="الشهر" />
+              </div>
+            </div>
+            <p class="muted hr-pad" id="hr-month-sum"></p>
+            <div class="table-wrap"><table>
+              <thead><tr><th>اليوم</th><th>الساعات</th><th>إضافي</th></tr></thead>
+              <tbody id="hr-month-table"></tbody>
+            </table></div>
+          </div>
+        </div>
+
+        <div class="card flush stab" id="htab-leaves" hidden>
+          <div class="table-tools">
+            <p class="muted">الإجازة السنوية تُخصم من رصيد الموظف. الإجازة بدون مرتب تُخصم تلقائيًا من مرتبه (أجر اليوم = المرتب ÷ أيام العمل). الإجازة الأسبوعية لا تُحسب.</p>
+            <div class="hr-btns">
+              <select id="hr-leave-filter" aria-label="تصفية بالموظف"></select>
+              <button id="hr-add-leave" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>تسجيل إجازة</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>الموظف</th><th>النوع</th><th>من</th><th>إلى</th><th>الأيام</th><th>ملاحظة</th><th class="actions-col">إجراء</th></tr></thead>
+            <tbody id="hr-leave-table"></tbody>
+          </table></div>
+        </div>
+
+        <div class="card flush stab" id="htab-adjust" hidden>
+          <div class="table-tools">
+            <p class="muted">الخصومات والمكافآت تدخل في مرتب الشهر الذي يقع فيه تاريخها.</p>
+            <div class="hr-btns">
+              <input id="hr-adj-month" type="month" aria-label="الشهر" />
+              <button id="hr-add-adj" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>إضافة خصم / مكافأة</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>التاريخ</th><th>الموظف</th><th>النوع</th><th>المبلغ</th><th>السبب</th><th class="actions-col">إجراء</th></tr></thead>
+            <tbody id="hr-adj-table"></tbody>
+          </table></div>
+        </div>
+
+        <div class="card flush stab" id="htab-advances" hidden>
+          <div class="table-tools">
+            <p class="muted">لا تُصرف سلفة تجعل إجمالي المستحق على الموظف أكبر من حد سلفه. القسط الشهري (إن وُجد) يُخصم تلقائيًا عند اعتماد المرتب.</p>
+            <div class="hr-btns">
+              <label class="check-inline"><input type="checkbox" id="hr-adv-open" checked /> غير المسددة فقط</label>
+              <button id="hr-add-adv" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>صرف سلفة</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>الموظف</th><th>التاريخ</th><th>المبلغ</th><th>القسط الشهري</th><th>المسدد</th><th>المتبقي</th><th class="actions-col">إجراء</th></tr></thead>
+            <tbody id="hr-adv-table"></tbody>
+          </table></div>
+        </div>
+
+        <div class="card flush stab" id="htab-payroll" hidden>
+          <div class="table-tools">
+            <p class="muted" id="hr-pay-note">الكشف يُحسب تلقائيًا من المرتب والساعات والإجازات والخصومات والسلف. بعد الاعتماد يُثبَّت المرتب ويُقفل الشهر لذلك الموظف.</p>
+            <div class="hr-btns">
+              <input id="hr-pay-month" type="month" aria-label="الشهر" />
+              <button id="hr-pay-approve" class="primary" type="button"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>اعتماد وصرف المتبقي</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>الموظف</th><th>الأساسي</th><th>الساعات</th><th>إضافي</th><th>مكافآت</th><th>خصومات</th><th>غياب بدون مرتب</th><th>سلف</th><th>الصافي</th><th class="actions-col">الحالة</th></tr></thead>
+            <tbody id="hr-pay-table"></tbody>
+            <tfoot id="hr-pay-foot"></tfoot>
+          </table></div>
+        </div>
+
+        <div class="card stab" id="htab-rules" hidden>
+          <p class="muted">هذه القواعد تحكم حساب المرتبات والسلف والإجازات لكل الموظفين. يمكن تخصيص ساعات العمل وحد السلف ورصيد الإجازة لموظف بعينه من تعديل بياناته.</p>
+          <form id="hr-rules-form" class="form-grid" novalidate>
+            <label for="hr-r-workdays">أيام العمل في الشهر<input id="hr-r-workdays" type="number" min="1" max="31" step="1" /></label>
+            <label for="hr-r-hours">ساعات العمل اليومية الافتراضية<input id="hr-r-hours" type="number" min="1" max="24" step="0.25" /></label>
+            <label for="hr-r-ot">معامل أجر الساعة الإضافية<input id="hr-r-ot" type="number" min="1" max="5" step="0.05" /></label>
+            <label for="hr-r-advpct">حد السلف الافتراضي (٪ من المرتب الشهري)<input id="hr-r-advpct" type="number" min="0" max="500" step="1" /></label>
+            <label for="hr-r-leave">رصيد الإجازة السنوية (أيام)<input id="hr-r-leave" type="number" min="0" max="90" step="1" /></label>
+            <label for="hr-r-off">الإجازة الأسبوعية<select id="hr-r-off"><option value="5">الجمعة</option><option value="6">السبت</option><option value="0">الأحد</option><option value="1">الاثنين</option><option value="2">الثلاثاء</option><option value="3">الأربعاء</option><option value="4">الخميس</option></select></label>
+            <p class="muted wide small">أجر الساعة للموظف الشهري = المرتب ÷ (أيام العمل × ساعات اليوم). الساعات التي تزيد عن ساعات اليوم تُحسب إضافي بالمعامل أعلاه. الموظف بالساعة يُحسب مرتبه = إجمالي الساعات × أجر الساعة.</p>
+            <div class="wide settings-actions"><button class="primary" type="submit"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>حفظ القواعد</button></div>
+          </form>
         </div>
       </section>
 
@@ -603,6 +738,90 @@
     <ul class="pay-list" id="ca-payments"></ul>
   </dialog>
 
+  <!-- موظف -->
+  <dialog id="hr-emp-dialog" aria-labelledby="he-title">
+    <form id="hr-emp-form" novalidate>
+      <input type="hidden" id="he-id" />
+      <div class="modal-head"><h2 id="he-title">موظف جديد</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="he-name">الاسم<input id="he-name" required autocomplete="off" maxlength="80" /></label>
+      <div class="form-grid">
+        <label for="he-job">الوظيفة<input id="he-job" autocomplete="off" maxlength="60" /></label>
+        <label for="he-phone">الهاتف<input id="he-phone" dir="ltr" inputmode="tel" autocomplete="off" /></label>
+        <label for="he-type">نوع الأجر<select id="he-type"><option value="monthly">مرتب شهري</option><option value="hourly">بالساعة</option></select></label>
+        <label for="he-salary"><span id="he-salary-label">المرتب الشهري (ج.م)</span><input id="he-salary" type="number" min="0" step="any" inputmode="decimal" required /></label>
+        <label for="he-hours">ساعات العمل اليومية<input id="he-hours" type="number" min="0.5" max="24" step="0.25" inputmode="decimal" /></label>
+        <label for="he-hire">تاريخ التعيين<input id="he-hire" type="date" /></label>
+        <label for="he-advlimit">حد السلف (ج.م)<input id="he-advlimit" type="number" min="0" step="any" inputmode="decimal" placeholder="فاضي = الحد الافتراضي" /></label>
+        <label for="he-leave">رصيد الإجازة السنوية (أيام)<input id="he-leave" type="number" min="0" max="90" step="1" inputmode="numeric" placeholder="فاضي = الافتراضي" /></label>
+      </div>
+      <label for="he-notes">ملاحظات<input id="he-notes" maxlength="300" autocomplete="off" /></label>
+      <label class="check-inline" id="he-active-row"><input type="checkbox" id="he-active" checked /> الموظف يعمل حاليًا</label>
+      <p class="form-error" id="he-error" role="alert"></p>
+      <button class="primary full lg" type="submit">حفظ</button>
+    </form>
+  </dialog>
+
+  <!-- إجازة -->
+  <dialog id="hr-leave-dialog" aria-labelledby="hl-title">
+    <form id="hr-leave-form" novalidate>
+      <div class="modal-head"><h2 id="hl-title">تسجيل إجازة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="hl-emp">الموظف<select id="hl-emp"></select></label>
+      <label for="hl-type">النوع<select id="hl-type"><option value="annual">سنوية (من الرصيد)</option><option value="sick">مرضية</option><option value="other_paid">أخرى بمرتب</option><option value="unpaid">بدون مرتب (تُخصم من المرتب)</option></select></label>
+      <div class="form-grid">
+        <label for="hl-from">من<input id="hl-from" type="date" required /></label>
+        <label for="hl-to">إلى<input id="hl-to" type="date" required /></label>
+      </div>
+      <p class="muted small" id="hl-info"></p>
+      <label for="hl-note">ملاحظة<input id="hl-note" maxlength="200" autocomplete="off" /></label>
+      <p class="form-error" id="hl-error" role="alert"></p>
+      <button class="primary full lg" type="submit">حفظ الإجازة</button>
+    </form>
+  </dialog>
+
+  <!-- خصم / مكافأة -->
+  <dialog id="hr-adj-dialog" aria-labelledby="ha-title">
+    <form id="hr-adj-form" novalidate>
+      <div class="modal-head"><h2 id="ha-title">خصم / مكافأة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="ha-emp">الموظف<select id="ha-emp"></select></label>
+      <div class="form-grid">
+        <label for="ha-kind">النوع<select id="ha-kind"><option value="deduction">خصم</option><option value="bonus">مكافأة</option></select></label>
+        <label for="ha-amount">المبلغ (ج.م)<input id="ha-amount" type="number" min="0" step="any" inputmode="decimal" required /></label>
+      </div>
+      <label for="ha-date">التاريخ<input id="ha-date" type="date" required /></label>
+      <label for="ha-reason">السبب<input id="ha-reason" maxlength="200" required autocomplete="off" placeholder="مثال: تأخير عن الحضور" /></label>
+      <p class="form-error" id="ha-error" role="alert"></p>
+      <button class="primary full lg" type="submit">حفظ</button>
+    </form>
+  </dialog>
+
+  <!-- سلفة -->
+  <dialog id="hr-adv-dialog" aria-labelledby="hv-title">
+    <form id="hr-adv-form" novalidate>
+      <div class="modal-head"><h2 id="hv-title">صرف سلفة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <label for="hv-emp">الموظف<select id="hv-emp"></select></label>
+      <p class="muted small" id="hv-info"></p>
+      <div class="form-grid">
+        <label for="hv-amount">مبلغ السلفة (ج.م)<input id="hv-amount" type="number" min="0" step="any" inputmode="decimal" required /></label>
+        <label for="hv-inst">القسط الشهري (اختياري)<input id="hv-inst" type="number" min="0" step="any" inputmode="decimal" placeholder="يُخصم تلقائيًا من المرتب" /></label>
+      </div>
+      <label for="hv-date">التاريخ<input id="hv-date" type="date" required /></label>
+      <label for="hv-note">ملاحظة<input id="hv-note" maxlength="200" autocomplete="off" /></label>
+      <p class="form-error" id="hv-error" role="alert"></p>
+      <button class="primary full lg" type="submit">صرف السلفة</button>
+    </form>
+  </dialog>
+
+  <!-- سداد سلفة -->
+  <dialog id="hr-repay-dialog" class="narrow" aria-labelledby="hp-title">
+    <form id="hr-repay-form" novalidate>
+      <div class="modal-head"><h2 id="hp-title">سداد سلفة</h2><button type="button" class="icon-btn" data-close aria-label="إغلاق"><svg class="ico"><use href="#i-x"/></svg></button></div>
+      <p class="muted" id="hp-info"></p>
+      <label for="hp-amount">المبلغ المسدّد (ج.م)<input id="hp-amount" type="number" min="0" step="any" inputmode="decimal" required /></label>
+      <p class="form-error" id="hp-error" role="alert"></p>
+      <button class="primary full lg" type="submit">تسجيل السداد</button>
+    </form>
+  </dialog>
+
   <!-- تأكيد -->
   <dialog id="confirm-dialog" class="narrow" aria-labelledby="confirm-title">
     <h2 id="confirm-title">تأكيد الإجراء</h2>
@@ -616,5 +835,6 @@
   <div id="toasts" class="toast-stack" popover="manual" aria-live="polite"></div>
 
   <script src="app.js" defer></script>
+  <script src="hr.js" defer></script>
 </body>
 </html>

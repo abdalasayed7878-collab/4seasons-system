@@ -549,3 +549,14 @@ dialog.wide-md{width:min(560px,94vw)}
 .card-logo img{width:150px;height:auto;display:block}
 .r-head .r-logo{display:block;width:140px;max-width:70%;height:auto;margin:0 auto 6px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 @media print{.card-logo,.r-logo,.brand-badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* ---------- الموظفون والمرتبات ---------- */
+.hr-btns{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hr-btns select,.hr-btns input[type=month]{min-width:150px;padding:8px 12px}
+.inline-field{display:flex;align-items:center;gap:10px;margin:0;font-weight:700}
+.inline-field input{width:auto}
+.hr-pad{padding:10px 16px 0}
+.hr-hours-input{width:96px;padding:7px 10px;text-align:center}
+#htab-attendance .card+.card{margin-top:18px}
+tfoot .total-row td{background:#f4f8fc;font-weight:700;border-top:2px solid var(--line)}
+#hr-pay-table td.actions{white-space:nowrap}

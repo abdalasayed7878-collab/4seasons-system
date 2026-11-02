@@ -1154,7 +1154,10 @@ function createDomain(db, config) {
     return { token, permissions, user: { id: u.id, username: u.username, name: u.name, role: u.role, permissions, mustChangePassword: !!u.must_change_password } };
   }
 
+  const hr = require('./hr').createHr(db, { audit });
+
   return {
+    ...hr,
     audit, getSettings, updateSettings, getCatalog, createService, updateService, createZone, updateZone,
     listCustomers, getCustomer, findCustomerExact, createCustomer, updateCustomer,
     listOrders, orderCounts, getOrder, createOrder, applyPricing, advanceOrder, collectPayment, getStats, invalidateStats,

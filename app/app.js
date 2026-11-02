@@ -34,8 +34,8 @@ const STATUS_LABEL = { pending_pricing: 'بانتظار القياس', in_progre
 const statusClass = s => ({ pending_pricing: 'pending', in_progress: 'progress', ready: 'ready' }[s] || 'done');
 const statusText = o => o.status === 'pending_pricing' && o.pending === 'price' ? 'بانتظار التسعير' : STATUS_LABEL[o.status] || o.status;
 const REQ_LABEL = { new: 'جديد', contacted: 'تم التواصل', converted: 'تم التحويل', cancelled: 'ملغي' };
-const VIEW_PERM = { dashboard: 'stats:read', pos: 'orders:create', customers: 'customers:read', orders: 'orders:read', requests: 'requests:read', messages: 'self', settings: 'settings:write' };
-const TITLES = { dashboard: 'أهلاً بك في 4Seasons', pos: 'الكاشير والطلبات', customers: 'العملاء', orders: 'متابعة الطلبات', requests: 'طلبات الموقع', messages: 'الرسائل الداخلية', settings: 'إعدادات النظام' };
+const VIEW_PERM = { dashboard: 'stats:read', pos: 'orders:create', customers: 'customers:read', orders: 'orders:read', requests: 'requests:read', messages: 'self', hr: 'hr:manage', settings: 'settings:write' };
+const TITLES = { dashboard: 'أهلاً بك في 4Seasons', pos: 'الكاشير والطلبات', customers: 'العملاء', orders: 'متابعة الطلبات', requests: 'طلبات الموقع', messages: 'الرسائل الداخلية', hr: 'الموظفون والمرتبات', settings: 'إعدادات النظام' };
 
 /* ---------- الحالة ---------- */
 let me = null;                       // { user, permissions }
@@ -279,6 +279,7 @@ function show(view) {
   if (view === 'requests') { loadRequests(); loadOtps(); }
   if (view === 'messages') loadMessages();
   if (view === 'settings') loadSettings();
+  if (view === 'hr') loadHr();
   if (drawerMode()) setMenuOpen(false);
   window.scrollTo(0, 0);
 }
